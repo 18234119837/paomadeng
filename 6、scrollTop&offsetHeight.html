@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="css/list.css">
+</head>
+
+<body>
+    <div class="slideTxtBox  container">
+        <!-- <div class="hd">
+            <ul>
+                <li>沈阳</li>
+                <li>北京</li>
+                <li>广州</li>
+            </ul>
+        </div> -->
+        <div class="title">
+            <div>
+                <span>业务名称</span>
+                <span>交易笔数</span>
+                <span>详细信息</span>
+            </div>
+        </div>
+        <div class="bd">
+                <marquee id="affiche" text-align="center" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;"  behavior="scroll" direction="up" class='box'
+                height="100%" width="100%" hspace="50" vspace="20" loop="-1" scrollamount="5" scrolldelay="100" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;"
+                >
+            </marquee>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script>
+    var arr = [{
+            id: 1,
+            name: '名称1',
+            num: 463443,
+            area: '沈阳'
+        },
+        {
+            id: 2,
+            name: '名称2',
+            num: 32430,
+            area: '沈阳'
+        },
+        {
+            id: 3,
+            name: '名称3',
+            num: 145706,
+            area: '沈阳'
+        },
+        {
+            id: 4,
+            name: '名称4',
+            num: 763454,
+            area: '沈阳'
+        },
+        {
+            id: 5,
+            name: '名称5',
+            num: 624134,
+            area: '沈阳'
+        },
+        {
+            id: 1,
+            name: '名称1',
+            num: 463443,
+            area: '北京'
+        },
+        {
+            id: 2,
+            name: '名称2',
+            num: 32430,
+            area: '北京'
+        },
+        {
+            id: 3,
+            name: '名称3',
+            num: 145706,
+            area: '北京'
+        },
+        {
+            id: 4,
+            name: '名称4',
+            num: 763454,
+            area: '北京'
+        },
+        {
+            id: 5,
+            name: '名称5',
+            num: 624134,
+            area: '北京'
+        },
+        {
+            id: 1,
+            name: '名称1',
+            num: 463443,
+            area: '广州'
+        },
+        {
+            id: 2,
+            name: '名称2',
+            num: 32430,
+            area: '广州'
+        },
+        {
+            id: 3,
+            name: '名称3',
+            num: 145706,
+            area: '广州'
+        },
+        {
+            id: 4,
+            name: '名称4',
+            num: 763454,
+            area: '广州'
+        },
+        {
+            id: 5,
+            name: '名称5',
+            num: 624134,
+            area: '广州'
+        }
+    ]
+    var str;
+
+    function createEle(ele) {
+        if (ele.id % 2 == 0) {
+            str = '<div class="content addColor"><span>' + ele.name + '</span><span>' + ele.num +
+                '</span><span>' + ele.area + '</span></div>'
+        } else {
+            str = '<div class="content"><span>' + ele.name + '</span><span>' + ele.num + '</span><span>' + ele
+                .area + '</span></div>'
+        }
+        return str
+    }
+    arr.forEach(function (ele) {
+        var div = createEle(ele)
+        $('.box').append(div)
+    })
+
+var affiche=$('#affiche')
+    function scroll(obj) {
+        var tmp = (obj.scrollLeft) ++;
+        //当滚动条到达右边顶端时
+        if (obj.scrollLeft == tmp) obj.innerHTML += obj.innerHTML;
+        //当滚动条滚动了初始内容的宽度时滚动条回到最左端
+        // if (obj.scrollLeft >= obj.firstChild.offsetWidth) obj.scrollLeft = 0;
+        if (obj.scrollTop >= obj.firstChild.offsetHeight) obj.scrollLeft = 0;
+// console.log(obj.scrollTop)
+console.log(obj)
+console.log(obj[0].offsetHeight)
+    }
+  scroll(affiche)
+
+</script>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="css/slide_style.css">
+</head>
+<body>
+    <!-- 官方网站：http://www.superslide2.com/index.html -->
+    <!-- 使用了superslide  -->
+    <!-- 具体参数 http://www.superslide2.com/param.html -->
+    <div class="slideTxtBox  container">
+        <div class="hd">
+            <ul>
+                <li>沈阳</li>
+                <li>北京</li>
+                <li>广州</li>
+            </ul>
+        </div>
+        <div class="title">
+            <div>
+                <span>业务名称</span>
+                <span>交易笔数</span>
+                <span>详细信息</span>
+            </div>
+        </div>
+        <div class="bd">
+            <ul class='box'>
+
+            </ul>
+            <ul class='beijing'>
+
+            </ul>
+            <ul class='guangzhou'>
+
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src='js/jquery.SuperSlide.2.1.js.js'></script>
+<script>
+
+    var arr = [{id: 1,name: '名称1',num: 463443,area: '沈阳'},
+        {id: 2,name: '名称2',num: 32430,area: '沈阳'},
+        {id: 3,name: '名称3',num: 145706,area: '沈阳'},
+        {id: 4,name: '名称4',num: 763454,area: '沈阳'},
+        {id: 5,name: '名称5',num: 624134,area: '沈阳'}
+    ]
+    var beijing=[{id: 1,name: '名称1',num: 463443,area: '北京'},
+        {id: 2,name: '名称2',num: 32430,area: '北京'},
+        {id: 3,name: '名称3',num: 145706,area: '北京'},
+        {id: 4,name: '名称4',num: 763454,area: '北京'},
+        {id: 5,name: '名称5',num: 624134,area: '北京'}
+    ]
+    var guangzhou=[{id: 1,name: '名称1',num: 463443,area: '广州'},
+        {id: 2,name: '名称2',num: 32430,area: '广州'},
+        {id: 3,name: '名称3',num: 145706,area: '广州'},
+        {id: 4,name: '名称4',num: 763454,area: '广州'},
+        {id: 5,name: '名称5',num: 624134,area: '广州'}
+    ]
+    var str;
+
+    function createEle (ele){
+        if (ele.id % 2 == 0) {
+            str = '<li class="content addColor"><span>' + ele.name + '</span><span>' + ele.num +
+                '</span><span>' + ele.area + '</span></li>'
+        } else {
+            str = '<li class="content"><span>' + ele.name + '</span><span>' + ele.num + '</span><span>' + ele
+                .area + '</span></li>'
+        }
+        return str
+    }
+    arr.forEach(function(ele){
+        var div=createEle (ele)
+        $('.box').append(div)
+    })
+    beijing.forEach(function(ele){
+        var div=createEle (ele)
+        $('.beijing').append(div)
+    })
+    guangzhou.forEach(function(ele){
+        var div=createEle (ele)
+        $('.guangzhou').append(div)
+    })
+   
+    jQuery(".slideTxtBox").slide({effect:"topLoop",autoPlay:true,trigger:"click"});
+
+</script>
+
+</html>

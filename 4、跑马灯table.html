@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN ">
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+    <table width="760 " align="center " border="1 ">
+        <tr>
+            <td align="center ">
+                <div id=demo style='overflow:hidden;height:110px;width:750px; '>
+                    <table height=110 border=0 cellspacing=0 cellpadding=0>
+                        <tr>
+                            <td id=demo1> -->
+                                <!-- 下面是你要显示的内容 -->
+                                <!-- <table width=780>
+                                    <tr>
+                                        <td> 第一 </td>
+                                        <td> 第二 </td>
+                                        <td> 文章标题 </td>
+                                        <td> 最牛交通工具 <br> 添　　加： <br> 更新时间：2004年10月9日 ' </td>
+                                        <td> 经典动物幽默图集 <br> 添　　加： <br> 更新时间：2004年10月7日 ' </td>
+                                        <td> 新化二中 <br> 添　　加： <br> 更新时间：2004年10月7日 ' </td>
+                                    </tr>
+                                </table> -->
+                                <!-- 显示的内容结束！ -->
+                            <!-- </td>
+                            <td id=demo2> </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script>
+        var speed = 15
+        demo2.innerHTML = demo1.innerHTML
+
+        function Marquee() {
+            if (demo2.offsetWidth - demo.scrollLeft <= 0)
+                demo.scrollLeft -= demo1.offsetWidth
+            else {
+                demo.scrollLeft++
+            }
+        }
+        var MyMar = setInterval(Marquee, speed)
+        demo.onmouseover = function () {
+            clearInterval(MyMar)
+        }
+        demo.onmouseout = function () {
+            MyMar = setInterval(Marquee, speed)
+        }
+    </script>
+    </td>
+    </tr>
+    </table>
+</BODY>
+
+</HTML>
+二、纵向滚动
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN ">
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+    <table width="100%" border="0" cellspacing="2" cellpadding="2">
+        <tr>
+            <td align="center">
+                <table width="150" border="0" align="center" cellpadding="0" cellspacing="0" style='background:yellow;'>
+                    <tr>
+                        <td width="194" style="padding-top:8px" valign="top">
+                            <DIV id=rolllinkk style="OVERFLOW: hidden; WIDTH: 145px; HEIGHT: 200px">
+                                <DIV id=rolllinkk1>
+                                    <!-- 下面是你要显示的内容 -->
+                                    <table width="100%" border="0" cellspacing="2" cellpadding="2">
+                                        <tr>
+                                            <td align="center">最牛交通工具111 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具 </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">最牛交通工具555 </td>
+                                        </tr>
+                                    </table>
+                                    <!-- 显示的内容结束！ -->
+                                    <DIV align=center> </DIV>
+                                </DIV>
+                                <DIV id=rolllinkk2>
+                                    <DIV align=center> </DIV>
+                                </DIV>
+
+                            </DIV>
+                            <SCRIPT>
+
+                                var rollspeed = 30
+                                rolllinkk2.innerHTML = rolllinkk1.innerHTML 
+                                
+                                function Marquee1() {
+                                    if (rolllinkk2.offsetTop - rolllinkk.scrollTop <= 0) //
+                                        rolllinkk.scrollTop -= rolllinkk1.offsetHeight //
+                                    else {
+                                        rolllinkk.scrollTop++
+                                    }
+                                }
+                                var MyMar1 = setInterval(Marquee1, rollspeed) 
+
+
+                                rolllinkk.onmouseover = function () {
+                                    clearInterval(MyMar1)
+                                } 
+                                rolllinkk.onmouseout = function () {
+                                    MyMar1 = setInterval(Marquee1, rollspeed)
+                                } 
+                            </SCRIPT>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+</BODY>
+
+</HTML>

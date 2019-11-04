@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size:14px;
+}
+.title{
+    width: 100%;
+    height: 30px;
+    background:#0b0a59;color:#fff;
+    font-size:14px;
+    line-height: 30px;
+    padding:0 15px;
+    box-sizing: border-box;
+}
+.title div{
+    width:100%;
+}
+.title span{
+    text-align: left;
+    width:30%;
+    float:left;
+}
+.addColor{
+    color:red;
+}
+.bd ul li{
+    width: 100%;
+}
+.bd ul li span{
+    text-align: left;
+    width:30%;
+    display: inline-block;
+}
+
+
+.slideTxtBox {
+    width: 450px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.slideTxtBox .hd {
+    height: 30px;
+    line-height: 30px;
+    background: #f4f4f4;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.slideTxtBox .hd ul {
+    float: left;
+    position: absolute;
+    left: 20px;
+    top: -1px;
+    height: 32px;
+}
+.slideTxtBox .hd ul li {
+    float: left;
+    padding: 0 15px;
+    cursor: pointer;
+}
+.slideTxtBox .hd ul li.on {
+    height: 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    /* border-bottom: 2px solid #fff; */
+}
+.slideTxtBox .bd ul {
+    padding: 15px;
+    zoom: 1;
+}
+.slideTxtBox .bd li {
+    width:100%;
+    height: 24px;
+    line-height: 24px;
+}
+.slideTxtBox .bd li .date {
+    float: right;
+    color: #999;
+}
+
+
+

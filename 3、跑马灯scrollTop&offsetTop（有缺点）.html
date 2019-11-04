@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 以下效果
+好处：收尾相连滚动
+坏处：将电脑屏幕缩放到小于100% 不再滚动 -->
+<DIV id=rolllinkk style="OVERFLOW: hidden; WIDTH: 600px; HEIGHT: 200px;background:yellow;">
+        <DIV id=rolllinkk1>
+        </DIV>
+        <DIV id=rolllinkk2>
+        </DIV>
+    </DIV>
+</body>
+<script src="js/jquery.3.4.1.js"></script>
+<SCRIPT>
+    var arr = [
+    {name: '北京市燃气费（第三方）',area: '正常'},
+    {name: '云南省移动通讯费',area: '正常'},
+    {name: '太原新朗格培训费',area: '正常'},
+    {name: '上海市市北/威立雅自来水费',area: '正常'},
+    {name: '沧州市昊天热力供暖费',area: '正常'},
+    {name: '云南省电费',area: '正常'},
+    {name: '北京联通通讯费代缴',area: '正常'},
+    {name: '昆明市电费',area: '正常'},
+    {name: '上海市移动条形码缴费',area: '正常'},
+    {name: '广州市电费',area: '正常'},
+    {name: '云南国有资源有偿使用收入',area: '正常'},
+    {name: '上海市网通条形码缴费',area: '正常'},
+    {name: '云南财政非税收缴',area: '正常'},
+    {name: '沧州市电费',area: '正常'},
+        ]
+        var str;
+        function createEle(ele) {
+            if (ele.id % 2 == 0) {
+                str = '<div class="content addColor"><span>' + ele.name + '</span><span class="num">' + ele.num +
+                    '</span><span>' + ele.area + '</span></div>'
+            } else {
+                str = '<div class="content"><span>' + ele.name + '</span><span class="num">' + ele.num + '</span><span>' + ele
+                    .area + '</span></div>'
+            }
+            return str
+        }
+        function  Num(){
+              var x = 200000;
+              var y = 30000;//随意调数字，现在是90-100以内的随机数
+              var rand = parseInt(Math.random()*(x-y+1)+y);
+              return rand
+        }
+        arr.forEach(function (ele,i) {
+            ele.id=i;
+            var num= Num()
+            ele.num=num
+            // console.log(ele)
+            var div = createEle(ele)
+            $('#rolllinkk1').append(div)
+        })
+
+    var rollspeed = 30
+
+    
+    rolllinkk2.innerHTML = rolllinkk1.innerHTML 
+    function Marquee1() {
+        if (rolllinkk2.offsetTop - rolllinkk.scrollTop <= 0){
+            rolllinkk.scrollTop -= rolllinkk1.offsetHeight 
+        }
+        else {
+            rolllinkk.scrollTop++
+        }
+    }
+    var MyMar1 = setInterval(Marquee1, rollspeed) 
+
+</SCRIPT>
+</html>

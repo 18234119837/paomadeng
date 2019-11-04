@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跑马灯1</title>
+    <style>
+        .home {
+            display: flex;
+            width: 5760px;
+            height: 1080px;
+            overflow: hidden;
+            box-sizing: border-box;
+            border: 1px solid red;
+        }
+
+        .inner,
+        .inner1,
+        .inner2 {
+            flex: 2;
+        }
+        .inner .inner_top{
+            height: calc(200% / 3);
+            width:100%;
+            background:pink;
+        }
+        .inner .visible-content-left-bottom {
+            background: yellow;
+            width: 100%;
+            height: calc(100% / 3);
+            text-align: center;
+            border-collapse: collapse;
+            padding-top: 20px;
+            box-sizing: border-box;
+            padding-left:20px;
+
+        }
+        .visible-content-left-bottom .list_title{
+            width:100%;
+            height:60px;
+            background:#ccc;
+            line-height:60px;
+            box-sizing: border-box;
+        }
+        .list_title div{
+            text-align: left;
+            float: left;
+            height: 100%;
+            box-sizing: border-box;
+            border:1px solid black;
+        }
+        .visible-content-left-bottom .list_title div:nth-child(1){
+            width:58%;
+            background:blue;
+        }
+        .visible-content-left-bottom .list_title div:nth-child(2){
+            width:18%;
+            background:blue;
+        }
+        .visible-content-left-bottom .list_title div:nth-child(3){
+            width:18%;
+            background:blue;
+        }
+        .visible-content-left-bottom .list_box{
+            width:100%;
+            height:calc(100% - 60px);
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .databox {
+            width:100%;
+            position: relative;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home">
+        
+        <div class="inner">
+            <div class="inner_top"></div>
+            <div class='visible-content-left-bottom'>
+
+                <div class="list_title">
+                    <div>缴费项目名称</div>
+                    <div>缴费笔数</div>
+                    <div>项目状态</div>
+                </div>
+                <div class="list_box" >
+                    <div class='databox' id="warnMsg">
+                            <!-- 滚动内容 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inner1"></div>
+        <div class="inner2"></div>
+    </div>
+</body>
+<script src="js/jquery.3.4.1.js"></script>
+<SCRIPT>
+    var arr = [
+    {name: '北京市燃气费（第三方）',area: '正常'},
+    {name: '云南省移动通讯费',area: '正常'},
+    {name: '太原新朗格培训费',area: '正常'},
+    {name: '上海市市北/威立雅自来水费',area: '正常'},
+    {name: '沧州市昊天热力供暖费',area: '正常'},
+    {name: '云南省电费',area: '正常'},
+    {name: '北京联通通讯费代缴',area: '正常'},
+    {name: '昆明市电费',area: '正常'},
+    {name: '上海市移动条形码缴费',area: '正常'},
+    {name: '广州市电费',area: '正常'},
+    {name: '云南国有资源有偿使用收入',area: '正常'},
+    {name: '上海市网通条形码缴费',area: '正常'},
+    {name: '云南财政非税收缴',area: '正常'},
+    {name: '沧州市电费',area: '正常'},
+    {name: '北京市歌华宽带费',area: '正常'},
+    {name: '唐山市电信宽带费',area: '正常'},
+    {name: '云南国有资产有偿使用收入',area: '正常'},
+    {name: '东莞樟木头自来水费代扣',area: '正常'},
+    {name: '丽江水费',area: '正常'},
+    {name: '曲靖汇美物管费',area: '正常'},
+    {name: '某银行昆明分行党费',area: '正常'},
+    {name: '深圳市中石化加油卡充值',area: '正常'},
+    {name: '广东省电信ADSL上网费充值',area: '正常'},
+    {name: '昆明五华小秀才学费代缴',area: '正常'},
+    {name: '河北省教育培训费',area: '正常'},
+    {name: '佛山市居民用户燃气费',area: '正常'},
+    {name: '云南省芒市水费代缴',area: '正常'},
+    {name: '易宝支付手机直充（联通）',area: '正常'},
+    {name: '云南省昭通市水费代缴',area: '正常'},
+    {name: '昆明麦迪森教育学费代缴',area: '正常'},
+    {name: '云南省电信代缴费（手机、固话、宽带）',area: '正常'},
+    {name: '北京电信通讯费代缴',area: '正常'},
+    {name: '河北省物业费',area: '正常'},
+    {name: '北京网络电表代缴',area: '正常'},
+    {name: '北京移动通讯费代缴',area: '正常'},
+    {name: '深圳市燃气费',area: '正常'},
+    {name: '云南行政事业性收费',area: '正常'},
+    {name: '云南行政事业性收费',area: '正常'},
+    {name: '北京市供暖费',area: '正常'},
+    {name: '易宝支付手机直充（电信）',area: '正常'},
+    {name: '云南省安宁水费代缴',area: '正常'},
+    {name: '北京市中石化加油卡充值',area: '正常'},
+    {name: '上海市电信分账序号缴费',area: '正常'},
+    {name: '昆明市燃气费',area: '正常'},
+    {name: '邯郸市交通违章罚款',area: '正常'},
+    {name: '上海市电信条形码缴费',area: '正常'},
+    {name: '昆明市花香十里小区代缴物业费',area: '正常'},
+    {name: '上海市联通条形码缴费',area: '正常'},
+    {name: '上海市铁通条形码缴费',area: '正常'},
+    {name: '云南彩票公益金收缴',area: '正常'},
+    {name: '昆明市自来水费代缴',area: '正常'},
+    {name: '广州市番禺市桥自来水费代扣',area: '正常'},
+    {name: '新云南省电费',area: '正常'},
+    {name: '晋城市安其居物业费',area: '正常'},
+    {name: '昆明汇润物管费代缴',area: '正常'},
+    {name: '昆明清源自来水费',area: '正常'},
+    {name: '汕头市物业费代缴',area: '正常'},
+    {name: '云南九洲通信器材服务费代缴',area: '正常'},
+    {name: '深圳市水费',area: '正常'},
+    {name: '曲靖汇美物管费',area: '正常'},
+    {name: '山西省ETC卡充值',area: '正常'},
+    {name: '山西省联通固话费',area: '正常'},
+    {name: '深圳市电费',area: '正常'},
+    {name: '全国联通手机充值',area: '正常'},
+    {name: '深圳市天威有线电视费',area: '正常'},
+    {name: '云南省联通通讯费',area: '正常'},
+    {name: '深圳市移动通讯费',area: '正常'},
+    {name: '石家庄市燃气费',area: '正常'},
+    {name: '河北省电信通讯费',area: '正常'},
+    {name: '北京自来水费',area: '正常'},
+    {name: '云南物流产业物流费代缴',area: '正常'},
+    {name: '云南政府性基金收费',area: '正常'},
+    {name: '邯郸市电信宽带费',area: '正常'},
+    {name: '云南省交通罚款',area: '正常'},
+    {name: '秦皇岛市电信宽带费',area: '正常'},
+    {name: '深圳市联通手机费',area: '正常'},
+    {name: '山西电信宽带',area: '正常'},
+    {name: '上海市移动手机号缴费',area: '正常'},
+    {name: '太原市电费',area: '正常'},
+    {name: '深圳市电信手机、固话、ADSL费用代缴',area: '正常'},
+    {name: '广州市番禺钟村自来水费代扣',area: '正常'},
+    {name: '临汾市电费',area: '正常'},
+    {name: '通州自来水(潞洲水务)',area: '正常'},
+    {name: '大兴自来水(兴润水务)',area: '正常'},
+    {name: '上海市市北燃气费',area: '正常'},
+    {name: '太原燃气费',area: '正常'},
+    {name: '上海市电信分账序号缴费',area: '正常'},
+    {name: '昆明集丰屋业物管费代缴',area: '正常'},
+    {name: '昆明官渡艺卓中学学费代缴',area: '正常'},
+    {name: '云南创锐物业费代缴',area: '正常'},
+    {name: '广电U宽频费用',area: '正常'},
+    {name: '中油碧辟加油卡充值',area: '正常'},
+    {name: '广东省有线电视费',area: '正常'},
+    {name: '彩生活物业费',area: '正常'},
+    {name: '某银行深圳分行委员会党费',area: '正常'},
+    {name: '深圳分行党务云项目模板',area: '正常'},
+    {name: '上海市电费户号缴费',area: '正常'},
+    {name: '保定市水费',area: '正常'},
+    {name: '上海市移动手机号缴费',area: '正常'},
+    {name: '昆明市有线电视费',area: '正常'},
+        ]
+        var str;
+        function createEle(ele) {
+            if (ele.id % 2 == 0) {
+                str = '<div class="content addColor"><span>' + ele.name + '</span><span class="num">' + ele.num +
+                    '</span><span>' + ele.area + '</span></div>'
+            } else {
+                str = '<div class="content"><span>' + ele.name + '</span><span class="num">' + ele.num + '</span><span>' + ele
+                    .area + '</span></div>'
+            }
+            return str
+        }
+        function  Num(){
+              var x = 200000;
+              var y = 30000;//随意调数字，现在是90-100以内的随机数
+              var rand = parseInt(Math.random()*(x-y+1)+y);
+              return rand
+        }
+        arr.forEach(function (ele,i) {
+            ele.id=i;
+            var num= Num()
+            ele.num=num
+            var div = createEle(ele)
+            $('#warnMsg').append(div)
+    })
+
+
+    scroll($('#warnMsg'));
+
+    function scroll(doc) {
+        var parentWidth = doc.parent('div').height();
+        var docWidth = doc.height();
+        doc.css('top', parentWidth + 'px');
+        var timer = setInterval(function () {
+            if (parseInt(doc.css('top')) > -docWidth) {
+                doc.css('top', (parseInt(doc.css('top')) - 1) + "px");
+            } else {
+                doc.css('top', parentWidth + 'px');
+            }
+        }, 30);
+
+    }
+
+
+
+
+
+
+</SCRIPT>
+
+
+</html>
